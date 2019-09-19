@@ -15,6 +15,7 @@ knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
 ```
 
+## Question 1 
 ## Creating a dataframe 
 
 This data frame will include classes in a high school and the floor they are located on within the school 
@@ -25,7 +26,7 @@ This data frame will include classes in a high school and the floor they are loc
 set.seed(8)
 HW_df = tibble(
     samp = rnorm(8),
-classes = samp > 0,
+logic = samp > 0,
 class = c("biology", "chemistry", "physics", "history", "math", "art", "music", "gym"),
 floor = factor(c("first", "second", "third", "second", "first", "second", "third", "first"))
 )
@@ -35,5 +36,15 @@ floor = factor(c("first", "second", "third", "second", "first", "second", "third
 Taking the mean of each variable
 ```{r}
 mean(pull(HW_df, samp))
+mean(pull(HW_df, logic))
+mean(pull(HW_df, class))
+mean(pull(HW_df, floor))
 
+```
+We received the mean for the numeric (samp) and logical (logic) variables. For both the charcter (class) and factor (floor) variables, R would not allow us to get the mean. We receive the following warning: argument is not numeric or logical: returning NA[1] NA. This is because there are currently methods for numeric/logical vectors and date, date-time, and time interval objects. Complex vectors are allowed for trim=0. 
+
+```{r}
+as.numeric(pull(HW_df,logic))
+as.numeric(pull(HW_df,class))
+as.numeric(pull(HW_df,floor))
 ```
