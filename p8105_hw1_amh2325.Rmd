@@ -24,7 +24,7 @@ This data frame will include classes in a high school and the floor they are loc
 
 #create a dataframe 
 set.seed(8)
-HW_df = tibble(
+hw_df = tibble(
     samp = rnorm(8),
 logic = samp > 0,
 class = c("biology", "chemistry", "physics", "history", "math", "art", "music", "gym"),
@@ -35,16 +35,38 @@ floor = factor(c("first", "second", "third", "second", "first", "second", "third
 
 Taking the mean of each variable
 ```{r}
-mean(pull(HW_df, samp))
-mean(pull(HW_df, logic))
-mean(pull(HW_df, class))
-mean(pull(HW_df, floor))
+#taking mean values 
+mean(pull(hw_df, samp))
+mean(pull(hw_df, logic))
+mean(pull(hw_df, class))
+mean(pull(hw_df, floor))
 
 ```
 We received the mean for the numeric (samp) and logical (logic) variables. For both the charcter (class) and factor (floor) variables, R would not allow us to get the mean. We receive the following warning: argument is not numeric or logical: returning NA[1] NA. This is because there are currently methods for numeric/logical vectors and date, date-time, and time interval objects. Complex vectors are allowed for trim=0. 
 
 ```{r}
-as.numeric(pull(HW_df,logic))
-as.numeric(pull(HW_df,class))
-as.numeric(pull(HW_df,floor))
+as.numeric(pull(hw_df,logic))
+as.numeric(pull(hw_df,class))
+as.numeric(pull(hw_df,floor))
 ```
+When we run the above codes, the values are outputted for the "logic" and "floor" variable but not for the "class" variable. This is because the logical variable has a value of 0 (false) and 1(true). There factor variable also technically has numeric variables as it is ordered: 1=first, 2=second, 3=third. 
+
+Converting logical variables 
+```{r}
+#converting logical vector to numeric and multiplying by samp
+logic = as.numeric(pull(hw_df, logic))
+pull(hw_df, samp)*logic 
+```
+
+```{r}
+#converting logical vector to a factor and multiplying by samp
+logic = as.factor(pull(hw_df, logic))
+pull(hw_df, samp)*logic
+```
+```{r}
+#converting logical factor to a factor, then converting the result to numeric, and multiplying by samp
+
+as.factor(pull(hw_df, logic))
+as.numeric(as.factor(pull(hw_df, logic)))*pull(hw_df, samp)
+```
+## Question 2 
