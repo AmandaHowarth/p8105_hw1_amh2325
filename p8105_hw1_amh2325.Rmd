@@ -5,7 +5,35 @@ date: "9/19/2019"
 output: github_document
 ---
 
+
+
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+``` {r}
+library(tidyverse)
+```
+
+## Creating a dataframe 
+
+This data frame will include classes in a high school and the floor they are located on within the school 
+
+```{r}
+
+#create a dataframe 
+set.seed(8)
+HW_df = tibble(
+    samp = rnorm(8),
+classes = samp > 0,
+class = c("biology", "chemistry", "physics", "history", "math", "art", "music", "gym"),
+floor = factor(c("first", "second", "third", "second", "first", "second", "third", "first"))
+)
+
+```
+
+Taking the mean of each variable
+```{r}
+mean(pull(HW_df, samp))
+
+```
