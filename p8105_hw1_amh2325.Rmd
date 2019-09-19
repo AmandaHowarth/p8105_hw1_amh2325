@@ -15,7 +15,7 @@ knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
 ```
 
-## Question 1 
+## Problem 1: This problem is intended to emphasize variable types and introduce coercion; some awareness of how R treats numeric, character, and factor variables is necessary for working with these data types in practice.
 ## Creating a dataframe 
 
 This data frame will include classes in a high school and the floor they are located on within the school 
@@ -69,4 +69,18 @@ pull(hw_df, samp)*logic
 as.factor(pull(hw_df, logic))
 as.numeric(as.factor(pull(hw_df, logic)))*pull(hw_df, samp)
 ```
-## Question 2 
+## Problem 2: This problem focuses the use of inline R code, plotting, and the behavior of ggplot for variables of different types.
+
+```{r}
+
+#create a dataframe 
+set.seed(1000)
+hw2_df = tibble(
+  x = rnorm(500),
+  y = rnorm(500),
+  logical_vector = x + y > 1,
+  numeric_vector = as.numeric(logical_vector),
+  factor_vector = as.factor(logical_vector)
+  )
+
+```
