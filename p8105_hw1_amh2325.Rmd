@@ -1,0 +1,11 @@
+---
+title: "p8105_hw1_amh2325"
+author: "Amanda Howarth"
+date: "9/19/2019"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
