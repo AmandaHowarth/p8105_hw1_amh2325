@@ -81,7 +81,7 @@ set.seed(1000)
 hw2_df = tibble(
   x = rnorm(500),
   y = rnorm(500),
-  logical_vector = x + y > 1,
+  logical_vector = c((x + y) > 1),
   numeric_vector = as.numeric(logical_vector),
   factor_vector = as.factor(logical_vector)
   )
@@ -95,3 +95,24 @@ mean(pull(hw2_df, logical_vector))
 #In my vector, there are 500 rows in the dataset and five columns. The mean value of x is 0.008544891, and the median value of x is 0.006517422. The standard deviation of x is 0.9390666. The proportion of cases for which x + y > 1 is 0.236.
 
 ```
+
+## Making a scatterplot 
+
+```{r}
+#plot with logical_vector 
+plot1 <- ggplot(hw2_df, aes(x = x, y = y, color = logical_vector)) + geom_point()
+```
+
+```{r}
+#plot with numeric_vector 
+plot2<- ggplot(hw2_df, aes(x = x, y = y, color = numeric_vector)) + geom_point()
+```
+
+```{r}
+#plot with factor_vector 
+plot3 <- ggplot(hw2_df, aes(x = x, y = y, color = factor_vector)) + geom_point()
+```
+
+Plot1 and Plot2 are identical in color and scatter. PLot 3 is also identical in scatter, however it is has different colors. 
+
+
