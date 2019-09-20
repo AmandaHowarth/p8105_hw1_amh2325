@@ -15,7 +15,9 @@ knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
 ```
 
-## Problem 1: This problem is intended to emphasize variable types and introduce coercion; some awareness of how R treats numeric, character, and factor variables is necessary for working with these data types in practice.
+## Problem 1: 
+This problem is intended to emphasize variable types and introduce coercion; some awareness of how R treats numeric, character, and factor variables is necessary for working with these data types in practice.
+
 ## Creating a dataframe 
 
 This data frame will include classes in a high school and the floor they are located on within the school 
@@ -69,11 +71,12 @@ pull(hw_df, samp)*logic
 as.factor(pull(hw_df, logic))
 as.numeric(as.factor(pull(hw_df, logic)))*pull(hw_df, samp)
 ```
-## Problem 2: This problem focuses the use of inline R code, plotting, and the behavior of ggplot for variables of different types.
+## Problem 2: 
+This problem focuses the use of inline R code, plotting, and the behavior of ggplot for variables of different types.
 
 ```{r}
 
-#create a dataframe 
+#create a second dataframe for Problem 2
 set.seed(1000)
 hw2_df = tibble(
   x = rnorm(500),
@@ -82,5 +85,13 @@ hw2_df = tibble(
   numeric_vector = as.numeric(logical_vector),
   factor_vector = as.factor(logical_vector)
   )
+
+nrow(hw2_df)
+ncol(hw2_df)
+mean(pull(hw2_df, x))
+median(pull(hw2_df, x))
+sd(pull(hw2_df, x))
+mean(pull(hw2_df, logical_vector))
+#In my vector, there are 500 rows in the dataset and five columns. The mean value of x is 0.008544891, and the median value of x is 0.006517422. The standard deviation of x is 0.9390666. The proportion of cases for which x + y > 1 is 0.236.
 
 ```
